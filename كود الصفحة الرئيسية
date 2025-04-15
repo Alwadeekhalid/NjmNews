@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الأخبار</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>موقع الأخبار</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#">الأخبار المحلية</a></li>
+                <li><a href="#">الأخبار العالمية</a></li>
+                <li><a href="#">رياضة</a></li>
+                <li><a href="#">تكنولوجيا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="news">
+            <article>
+                <img src="images/news1.jpg" alt="خبر 1">
+                <h2><a href="news-details.html">العنوان الرئيسي للخبر الأول</a></h2>
+                <p>مقتطف من الخبر الأول... <a href="news-details.html">إقرأ المزيد</a></p>
+            </article>
+
+            <article>
+                <img src="images/news2.jpg" alt="خبر 2">
+                <h2><a href="news-details.html">العنوان الرئيسي للخبر الثاني</a></h2>
+                <p>مقتطف من الخبر الثاني... <a href="news-details.html">إقرأ المزيد</a></p>
+            </article>
+
+            <article>
+                <img src="images/news3.jpg" alt="خبر 3">
+                <h2><a href="news-details.html">العنوان الرئيسي للخبر الثالث</a></h2>
+                <p>مقتطف من الخبر الثالث... <a href="news-details.html">إقرأ المزيد</a></p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 موقع الأخبار</p>
+    </footer>
+</body>
+</html>
