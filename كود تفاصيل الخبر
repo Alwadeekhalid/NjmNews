@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الخبر</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>موقع الأخبار</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#">الأخبار المحلية</a></li>
+                <li><a href="#">الأخبار العالمية</a></li>
+                <li><a href="#">رياضة</a></li>
+                <li><a href="#">تكنولوجيا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="news-detail">
+            <h2>العنوان الكامل للخبر</h2>
+            <img src="images/news1.jpg" alt="تفاصيل الخبر">
+            <p>هنا تفاصيل الخبر الكامل. يمكنك إضافة الفقرات المختلفة حول الخبر، بما في ذلك المعلومات الأساسية، الصور، وأي مراجع أخرى.</p>
+            <p>استمر في سرد التفاصيل... هذه المنطقة يمكن أن تحتوي على نص طويل مع فقرات مفصلة حول الحدث أو الموضوع.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 موقع الأخبار</p>
+    </footer>
+</body>
+</html>
