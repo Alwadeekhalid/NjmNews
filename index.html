@@ -10,12 +10,13 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #ffffff; /* خلفية الموقع بيضاء */
+      color: #222;
       direction: rtl;
     }
 
     header {
-      background-color: #222;
+      background-color: #d62828; /* أحمر */
       color: white;
       padding: 15px 20px;
       display: flex;
@@ -80,11 +81,11 @@
     }
 
     .news article {
-      background-color: white;
+      background-color: #f9f9f9;
       margin-bottom: 20px;
       padding: 15px;
       border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
     }
 
     .news article h2 {
@@ -94,12 +95,13 @@
     .news article a {
       display: inline-block;
       margin-top: 10px;
-      color: #007BFF;
+      color: #d62828;
       text-decoration: none;
+      font-weight: bold;
     }
 
     footer {
-      background-color: #222;
+      background-color: #d62828;
       color: white;
       text-align: center;
       padding: 10px;
@@ -154,11 +156,11 @@
         const newsSection = document.getElementById("newsSection");
         const breakingText = document.getElementById("breakingText");
 
-        // عرض شريط الأخبار العاجلة
+        // شريط الأخبار العاجلة
         let breakingHeadlines = data.articles.map(article => article.title).join(" | ");
         breakingText.textContent = breakingHeadlines;
 
-        // عرض المقالات
+        // عرض الأخبار
         data.articles.forEach(article => {
           const art = document.createElement("article");
           art.innerHTML = `
