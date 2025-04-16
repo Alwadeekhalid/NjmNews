@@ -17,13 +17,26 @@
     header {
       background-color: #222;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-left: 10px;
     }
 
     nav ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     nav ul li {
@@ -34,6 +47,32 @@
     nav ul li a {
       color: white;
       text-decoration: none;
+    }
+
+    .breaking-news {
+      background-color: #d62828;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      overflow: hidden;
+      position: relative;
+      height: 40px;
+    }
+
+    .breaking-news .scrolling-text {
+      position: absolute;
+      white-space: nowrap;
+      animation: scroll-left 20s linear infinite;
+      left: 100%;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     main {
@@ -68,12 +107,17 @@
   </style>
 </head>
 <body>
+
+  <!-- الهيدر مع اللوقو -->
   <header>
-    <h1>موقع الأخبار</h1>
+    <div class="logo">
+      <img src="logo.png" alt="شعار الموقع" />
+      <h1>موقع الأخبار</h1>
+    </div>
     <nav>
       <ul>
         <li><a href="#">الرئيسية</a></li>
-        <li><a href="#">أخبار محلية</a></li>
+        <li><a href="#">محلية</a></li>
         <li><a href="#">عالمية</a></li>
         <li><a href="#">رياضة</a></li>
         <li><a href="#">اتصل بنا</a></li>
@@ -81,24 +125,55 @@
     </nav>
   </header>
 
-  <main>
-    <section class="news">
-      <article>
-        <h2>عنوان الخبر الأول</h2>
-        <p>هذا هو محتوى الخبر الأول بشكل مختصر. يمكن أن يتضمن تفاصيل عن الحدث، المصدر، والتوقيت.</p>
-        <a href="#">اقرأ المزيد</a>
-      </article>
+  <!-- شريط الأخبار العاجلة -->
+  <div class="breaking-news">
+    <div class="scrolling-text" id="breakingText">
+      جاري تحميل الأخبار العاجلة...
+    </div>
+  </div>
 
-      <article>
-        <h2>عنوان الخبر الثاني</h2>
-        <p>تفاصيل مختصرة عن الخبر الثاني... يمكن كتابة ملخص سريع لجذب القارئ للنقر على الرابط.</p>
-        <a href="#">اقرأ المزيد</a>
-      </article>
+  <!-- محتوى الأخبار -->
+  <main>
+    <section class="news" id="newsSection">
+      <!-- الأخبار يتم تحميلها تلقائيًا -->
     </section>
   </main>
 
   <footer>
     <p>© 2025 موقع الأخبار. جميع الحقوق محفوظة.</p>
   </footer>
+
+  <!-- سكربت جلب الأخبار -->
+  <script>
+    const apiKey = "🔑 ضع_مفتاحك_هنا"; // ضع مفتاح NewsAPI الخاص بك هنا
+    const url = `https://newsapi.org/v2/top-headlines?language=ar&country=eg&pageSize=5&apiKey=${apiKey}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const newsSection = document.getElementById("newsSection");
+        const breakingText = document.getElementById("breakingText");
+
+        // عرض شريط الأخبار العاجلة
+        let breakingHeadlines = data.articles.map(article => article.title).join(" | ");
+        breakingText.textContent = breakingHeadlines;
+
+        // عرض المقالات
+        data.articles.forEach(article => {
+          const art = document.createElement("article");
+          art.innerHTML = `
+            <h2>${article.title}</h2>
+            <p>${article.description || ''}</p>
+            <a href="${article.url}" target="_blank">اقرأ المزيد</a>
+          `;
+          newsSection.appendChild(art);
+        });
+      })
+      .catch(error => {
+        console.error("خطأ في جلب الأخبار:", error);
+        document.getElementById("breakingText").textContent = "تعذر تحميل الأخبار العاجلة حاليًا.";
+      });
+  </script>
+
 </body>
 </html>
