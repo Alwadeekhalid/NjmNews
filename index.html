@@ -172,18 +172,15 @@ footer p {
 <!-- شريط الأخبار العاجلة -->
 <div class="breaking-news">
     <div class="scrolling-text" id="breakingText">
-        هنا يمكنك كتابة الأخبار العاجلة...
-    </div>
+خالد علي محمد ال خرصان    </div>
 </div>
 
 <!-- محتوى الأخبار -->
 <main>
     <section class="news" id="newsSection">
         <h1>الأخبار الرئيسية</h1>
-        <p>خالد علي محمد ال خرصان 
-مشعل مسفر سالم ال سالم
-نوت محمد عبيد العجمي
-ميثا نياف محمد المطيري.</p>
+        <p>خالد علي محمد ال خرصان و زملائه (ابو مسفر جعله يسلم ، نوت العجمي ، ميثا المطيري)
+        هذا والله ولي التوفيق</p>
     </section>
 
     <section id="local" style="display:none;">
@@ -211,6 +208,37 @@ footer p {
 <footer>
     <p>© 2025 نجم. جميع الحقوق محفوظة.</p>
 </footer>
+
+<script>
+const apiKey = "🔑 ضع_مفتاحك_هنا"; // ضع مفتاح NewsAPI الخاص بك هنا
+const url = `https://newsapi.org/v2/top-headlines?language=ar&country=eg&pageSize=5&apiKey=${apiKey}`;
+
+fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        const newsSection = document.getElementById("newsSection");
+        const breakingText = document.getElementById("breakingText");
+
+        // شريط الأخبار العاجلة
+        let breakingHeadlines = data.articles.map(article => article.title).join(" | ");
+        breakingText.textContent = breakingHeadlines;
+
+        // عرض الأخبار
+        data.articles.forEach(article => {
+            const art = document.createElement("article");
+            art.innerHTML = `
+                <img src="${article.urlToImage || 'placeholder.jpg'}" alt="صورة الخبر" />
+                <h2>${article.title}</h2>
+                <p>${article.description || ''}</p>
+                <a href="${article.url}" target="_blank">اقرأ المزيد</a>
+            `;
+            newsSection.appendChild(art);
+        });
+    })
+    .catch(error => {
+        console.error("خطأ في جلب الأخبار:", error);
+        document.getElementById("breakingText").textContent = "تعذر تحميل الأخبار العاجلة حاليًا.";
+    });
 
 // تغيير المحتوى عند الضغط على الروابط
 document.querySelectorAll('nav ul li a').forEach(link => {
