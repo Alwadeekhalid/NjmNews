@@ -1,181 +1,229 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> نجم </title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>نجم</title>
 
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff; /* خلفية الموقع بيضاء */
-      color: #222;
-      direction: rtl;
-    }
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* خلفية فاتحة ومريحة للعين */
+    color: #333; /* لون نص داكن */
+    direction: rtl;
+}
 
-    header {
-      background-color: #d62828; /* أحمر */
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+header {
+    background-color: #007bff; /* أزرق */
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+.logo {
+    display: flex;
+    align-items: center;
+}
 
-    .logo img {
-      height: 40px;
-      margin-left: 10px;
-    }
+.logo img {
+    height: 50px; /* زيادة ارتفاع الشعار */
+    margin-left: 10px;
+}
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    nav ul li {
-      display: inline-block;
-      margin: 0 10px;
-    }
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-    }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; /* جعل النص أكثر وضوحًا */
+    transition: color 0.3s;
+}
 
-    .breaking-news {
-      background-color: #d62828;
-      color: white;
-      padding: 10px;
-      font-weight: bold;
-      overflow: hidden;
-      position: relative;
-      height: 40px;
-    }
+nav ul li a:hover {
+    color: #ffd700; /* لون الذهب عند التمرير */
+}
 
-    .breaking-news .scrolling-text {
-      position: absolute;
-      white-space: nowrap;
-      animation: scroll-left 40s linear infinite;
-      left: 100%;
-    }
+.breaking-news {
+    background-color: #ff4c4c; /* لون أحمر */
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    height: 50px; /* ارتفاع أكبر */
+    text-align: center; /* توسيط النص */
+    border-radius: 5px; /* زوايا دائرية */
+    margin: 20px 0; /* هوامش أعلى وأسفل */
+}
 
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
+.breaking-news .scrolling-text {
+    position: absolute;
+    white-space: nowrap;
+    animation: scroll-right 10s linear infinite; /* تسريع الحركة */
+    left: 100%; /* بدء الحركة من اليسار */
+}
 
-    main {
-      padding: 20px;
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-100%); /* بدء الحركة من اليسار */
     }
+    100% {
+        transform: translateX(100%); /* الانتهاء من اليمين */
+    }
+}
 
-    .news article {
-      background-color: #f9f9f9;
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.05);
-    }
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* توسيط المحتوى */
+}
 
-    .news article h2 {
-      margin-top: 0;
-    }
+.news {
+    display: flex;
+    flex-direction: column; /* تغيير الاتجاه إلى عمودي */
+    gap: 20px;
+    max-width: 900px; /* عرض أقصى للمحتوى */
+    width: 100%; /* جعل العرض 100% */
+}
 
-    .news article a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #d62828;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.news article {
+    background-color: white; /* لون أبيض للمقالات */
+    padding: 20px; /* زيادة المساحة الداخلية */
+    border-radius: 10px; /* زوايا دائرية */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل أكثر وضوحًا */
+    transition: box-shadow 0.3s, transform 0.3s; /* إضافة تأثير التحول */
+}
 
-    footer {
-      background-color: #d62828;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-  </style>
+.news article:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* تحريك لأعلى عند التمرير */
+}
+
+.news article img {
+    width: 100%; /* جعل الصورة تتناسب مع عرض المقال */
+    border-radius: 10px 10px 0 0; /* زوايا دائرية للصورة */
+}
+
+.news article h2 {
+    margin-top: 10px;
+    font-size: 1.5em; /* زيادة حجم العنوان */
+    color: #007bff; /* لون أزرق */
+}
+
+.news article a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff; /* أزرق */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.news article a:hover {
+    color: #0056b3; /* لون أغمق عند التمرير */
+}
+
+footer {
+    background-color: #007bff; /* أزرق */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    margin-top: 20px; /* هوامش أعلى */
+}
+
+footer p {
+    margin: 0;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- الهيدر مع اللوقو -->
-  <header>
+<header>
     <div class="logo">
-      <img src="logo.png" alt="شعار الموقع" />
-      <h1>نجم</h1>
+        <img src="logo.png" alt="شعار الموقع" />
     </div>
     <nav>
-      <ul>
-        <li><a href="#">الرئيسية</a></li>
-        <li><a href="#">محلية</a></li>
-        <li><a href="#">عالمية</a></li>
-        <li><a href="#">رياضة</a></li>
-        <li><a href="#">اتصل بنا</a></li>
-      </ul>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#local">محلية</a></li>
+            <li><a href="#global">عالمية</a></li>
+            <li><a href="#sports">رياضة</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
     </nav>
-  </header>
+</header>
 
-  <!-- شريط الأخبار العاجلة -->
-  <div class="breaking-news">
+<!-- شريط الأخبار العاجلة -->
+<div class="breaking-news">
     <div class="scrolling-text" id="breakingText">
-      جاري تحميل الأخبار العاجلة...
+        هنا يمكنك كتابة الأخبار العاجلة...
     </div>
-  </div>
+</div>
 
-  <!-- محتوى الأخبار -->
-  <main>
+<!-- محتوى الأخبار -->
+<main>
     <section class="news" id="newsSection">
-      <!-- الأخبار يتم تحميلها تلقائيًا -->
+        <h1>الأخبار الرئيسية</h1>
+        <p>خالد علي محمد ال خرصان 
+مشعل مسفر سالم ال سالم
+نوت محمد عبيد العجمي
+ميثا نياف محمد المطيري.</p>
     </section>
-  </main>
 
-  <footer>
+    <section id="local" style="display:none;">
+        <h1>الأخبار المحلية</h1>
+        <p>محتوى الأخبار المحلية يظهر هنا.</p>
+    </section>
+
+    <section id="global" style="display:none;">
+        <h1>الأخبار العالمية</h1>
+        <p>محتوى الأخبار العالمية يظهر هنا.</p>
+    </section>
+
+    <section id="sports" style="display:none;">
+        <h1>الأخبار الرياضية</h1>
+        <p>محتوى الأخبار الرياضية يظهر هنا.</p>
+    </section>
+
+    <section id="contact" style="display:none;">
+        <h1>اتصل بنا</h1>
+        <p>رقم الهاتف: 0504483331</p>
+        <p>البريد الإلكتروني: <a href="mailto:alwadeesa@gmail.com">alwadeesa@gmail.com</a></p>
+    </section>
+</main>
+
+<footer>
     <p>© 2025 نجم. جميع الحقوق محفوظة.</p>
-  </footer>
+</footer>
 
-  <!-- سكربت جلب الأخبار -->
-  <script>
-    const apiKey = "🔑 ضع_مفتاحك_هنا"; // ضع مفتاح NewsAPI الخاص بك هنا
-    const url = `https://newsapi.org/v2/top-headlines?language=ar&country=eg&pageSize=5&apiKey=${apiKey}`;
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        const newsSection = document.getElementById("newsSection");
-        const breakingText = document.getElementById("breakingText");
-
-        // شريط الأخبار العاجلة
-        let breakingHeadlines = data.articles.map(article => article.title).join(" | ");
-        breakingText.textContent = breakingHeadlines;
-
-        // عرض الأخبار
-        data.articles.forEach(article => {
-          const art = document.createElement("article");
-          art.innerHTML = `
-            <h2>${article.title}</h2>
-            <p>${article.description || ''}</p>
-            <a href="${article.url}" target="_blank">اقرأ المزيد</a>
-          `;
-          newsSection.appendChild(art);
+// تغيير المحتوى عند الضغط على الروابط
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        document.querySelectorAll('main > section').forEach(section => {
+            section.style.display = 'none'; // إخفاء جميع الأقسام
         });
-      })
-      .catch(error => {
-        console.error("خطأ في جلب الأخبار:", error);
-        document.getElementById("breakingText").textContent = "تعذر تحميل الأخبار العاجلة حاليًا.";
-      });
-  </script>
+        document.getElementById(targetId).style.display = 'block'; // إظهار القسم المطلوب
+    });
+});
+</script>
 
 </body>
 </html>
